@@ -11,6 +11,7 @@ import relativeTime from "dayjs/plugin/relativeTime";
 
 import { LoadingPage, LoadingSpinner } from "../components/loading";
 import toast from "react-hot-toast";
+import { PageLayout } from "../components/layout";
 
 dayjs.extend(relativeTime);
 
@@ -126,21 +127,19 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="h-center flex justify-center">
-        <div className="h-full w-full border-x border-slate-400 md:max-w-2xl">
-          <div className="flex border-b border-slate-400 p-4">
-            {!!isSignedIn && <CreatePostWizard />}
+      <PageLayout>
+        <div className="flex border-b border-slate-400 p-4">
+          {!!isSignedIn && <CreatePostWizard />}
 
-            {!isSignedIn && (
-              <div className="flex justify-center">
-                <SignInButton mode="modal">Sign in</SignInButton>
-              </div>
-            )}
-          </div>
-
-          <Feed />
+          {!isSignedIn && (
+            <div className="flex justify-center">
+              <SignInButton mode="modal">Sign in</SignInButton>
+            </div>
+          )}
         </div>
-      </main>
+
+        <Feed />
+      </PageLayout>
     </>
   );
 }
