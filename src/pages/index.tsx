@@ -1,23 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import Head from "next/head";
 
-import {
-  SignInButton,
-  SignOutButton,
-  UserButton,
-  useUser,
-} from "@clerk/nextjs";
+import { SignInButton, UserButton, useUser } from "@clerk/nextjs";
+import Image from "next/image";
+
 import { type RouterOutputs, api } from "../utils/api";
 
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import Image from "next/image";
+
 import { LoadingPage, LoadingSpinner } from "../components/loading";
 
 dayjs.extend(relativeTime);
 
 const CreatePostWizard = () => {
   const { user } = useUser();
+  const ctx = api.useContext();
+  const { mutate, isLoading: isPosting } = api.posts.create.useMutation({
+    onSuccess: async () => {
+      setInput("");
+      await ctx.posts.getAll.invalidate();
+    },
+  });
+
+  const [input, setInput] = useState("");
 
   if (!user) return null;
 
@@ -34,30 +40,24 @@ const CreatePostWizard = () => {
         }}
       />
 
-      {/* <input
+      <input
         placeholder="Type some emojis!"
-        className="grow bg-transparent outline-none"
+        className="grow bg-transparent p-2 outline-none focus:ring-1"
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            e.preventDefault();
-            if (input !== "") {
-              mutate({ content: input });
-            }
-          }
-        }}
         disabled={isPosting}
       />
+
       {input !== "" && !isPosting && (
         <button onClick={() => mutate({ content: input })}>Post</button>
       )}
+
       {isPosting && (
         <div className="flex items-center justify-center">
           <LoadingSpinner size={20} />
         </div>
-      )} */}
+      )}
     </div>
   );
 };
@@ -78,7 +78,7 @@ const PostView = (props: PostWithUser) => {
 
       <div className="flex flex-col">
         <div className="flex gap-1 text-slate-400">
-          <span>{`@${author.username}`}</span> ·{" "}
+          <span>{`@${author.username}`}</span>·
           <span className="font-thin">{dayjs(post.createdAt).fromNow()}</span>
         </div>
 
@@ -97,7 +97,7 @@ const Feed = () => {
 
   return (
     <div className="flex flex-col">
-      {data?.map((fullPost) => (
+      {data.map((fullPost) => (
         <PostView key={fullPost.post.id} {...fullPost} />
       ))}
     </div>
@@ -121,13 +121,7 @@ export default function Home() {
       <main className="h-center flex justify-center">
         <div className="h-full w-full border-x border-slate-400 md:max-w-2xl">
           <div className="flex border-b border-slate-400 p-4">
-            {!!isSignedIn && (
-              <div className="flex justify-center">
-                <SignOutButton>Sign out</SignOutButton>
-
-                <CreatePostWizard />
-              </div>
-            )}
+            {!!isSignedIn && <CreatePostWizard />}
 
             {!isSignedIn && (
               <div className="flex justify-center">
