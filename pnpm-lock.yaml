@@ -29,6 +29,9 @@ dependencies:
   '@trpc/server':
     specifier: ^10.34.0
     version: registry.npmjs.org/@trpc/server@10.34.0
+  dayjs:
+    specifier: ^1.11.9
+    version: registry.npmjs.org/dayjs@1.11.9
   next:
     specifier: ^13.4.2
     version: registry.npmjs.org/next@13.4.2(react-dom@18.2.0)(react@18.2.0)
@@ -1543,6 +1546,12 @@ packages:
     name: damerau-levenshtein
     version: 1.0.8
     dev: true
+
+  registry.npmjs.org/dayjs@1.11.9:
+    resolution: {integrity: sha512-QvzAURSbQ0pKdIye2txOzNaHmxtUBXerpY0FJsFXUMKbIZeFm5ht1LS/jFsrncjnmtv8HsG0W2g6c0zUjZWmpA==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/dayjs/-/dayjs-1.11.9.tgz}
+    name: dayjs
+    version: 1.11.9
+    dev: false
 
   registry.npmjs.org/debug@3.2.7:
     resolution: {integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/debug/-/debug-3.2.7.tgz}
