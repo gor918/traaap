@@ -50,6 +50,10 @@ const CreatePostWizard = () => {
         type="text"
         value={input}
         onChange={(e) => setInput(e.target.value)}
+        onKeyDown={(e) => {
+          (e.key === "Enter" || e.key === "NumpadEnter") &&
+            mutate({ content: input });
+        }}
         disabled={isPosting}
       />
 
