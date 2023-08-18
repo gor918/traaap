@@ -10,6 +10,7 @@ import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
 
 import { LoadingPage, LoadingSpinner } from "../components/loading";
+import toast from "react-hot-toast";
 
 dayjs.extend(relativeTime);
 
@@ -20,6 +21,9 @@ const CreatePostWizard = () => {
     onSuccess: async () => {
       setInput("");
       await ctx.posts.getAll.invalidate();
+    },
+    onError: (err) => {
+      toast.error(err.message);
     },
   });
 

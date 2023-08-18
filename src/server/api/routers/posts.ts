@@ -62,8 +62,7 @@ export const postsRouter = createTRPCRouter({
       if (!success) {
         throw new TRPCError({
           code: "TOO_MANY_REQUESTS",
-          message:
-            "You are doing that too much. Please try again later in a minute",
+          message: "Too many requests. Please try again in a minute.",
         });
       }
 

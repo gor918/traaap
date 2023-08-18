@@ -47,6 +47,9 @@ dependencies:
   react-dom:
     specifier: 18.2.0
     version: registry.npmjs.org/react-dom@18.2.0(react@18.2.0)
+  react-hot-toast:
+    specifier: ^2.4.1
+    version: registry.npmjs.org/react-hot-toast@2.4.1(csstype@3.1.2)(react-dom@18.2.0)(react@18.2.0)
   superjson:
     specifier: ^1.13.1
     version: registry.npmjs.org/superjson@1.13.1
@@ -1576,7 +1579,6 @@ packages:
     resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/csstype/-/csstype-3.1.2.tgz}
     name: csstype
     version: 3.1.2
-    dev: true
 
   registry.npmjs.org/damerau-levenshtein@1.0.8:
     resolution: {integrity: sha512-sdQSFB7+llfUcQHUQO3+B8ERRj0Oa4w9POWMI/puGtuf7gFywGmkaLCElnudfTiKZV+NvHqL0ifzdrI8Ro7ESA==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/damerau-levenshtein/-/damerau-levenshtein-1.0.8.tgz}
@@ -2473,6 +2475,17 @@ packages:
       merge2: registry.npmjs.org/merge2@1.4.1
       slash: registry.npmjs.org/slash@3.0.0
     dev: true
+
+  registry.npmjs.org/goober@2.1.13(csstype@3.1.2):
+    resolution: {integrity: sha512-jFj3BQeleOoy7t93E9rZ2de+ScC4lQICLwiAQmKMg9F6roKGaLSHoCDYKkWlSafg138jejvq/mTdvmnwDQgqoQ==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/goober/-/goober-2.1.13.tgz}
+    id: registry.npmjs.org/goober/2.1.13
+    name: goober
+    version: 2.1.13
+    peerDependencies:
+      csstype: ^3.0.10
+    dependencies:
+      csstype: registry.npmjs.org/csstype@3.1.2
+    dev: false
 
   registry.npmjs.org/gopd@1.0.1:
     resolution: {integrity: sha512-d65bNlIadxvpb/A2abVdlqKqV563juRnZ1Wtk6s1sIR8uNsXR70xqIzVqxVf1eTqDunwT2MkczEeaezCKTZhwA==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/gopd/-/gopd-1.0.1.tgz}
@@ -3636,6 +3649,23 @@ packages:
       loose-envify: registry.npmjs.org/loose-envify@1.4.0
       react: registry.npmjs.org/react@18.2.0
       scheduler: registry.npmjs.org/scheduler@0.23.0
+    dev: false
+
+  registry.npmjs.org/react-hot-toast@2.4.1(csstype@3.1.2)(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-j8z+cQbWIM5LY37pR6uZR6D4LfseplqnuAO4co4u8917hBUvXlEqyP1ZzqVLcqoyUesZZv/ImreoCeHVDpE5pQ==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/react-hot-toast/-/react-hot-toast-2.4.1.tgz}
+    id: registry.npmjs.org/react-hot-toast/2.4.1
+    name: react-hot-toast
+    version: 2.4.1
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+    dependencies:
+      goober: registry.npmjs.org/goober@2.1.13(csstype@3.1.2)
+      react: registry.npmjs.org/react@18.2.0
+      react-dom: registry.npmjs.org/react-dom@18.2.0(react@18.2.0)
+    transitivePeerDependencies:
+      - csstype
     dev: false
 
   registry.npmjs.org/react-is@16.13.1:
