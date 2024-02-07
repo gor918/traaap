@@ -1,0 +1,21 @@
+name: "Notifications"
+
+on:
+  push:
+    branches: [main]
+
+env:
+  APP_NAME: "test"
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: gor918/ms-teams-card-action@main
+        if: success()
+        with:
+          github-token: ${{ github.token }}
+          ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+          notification-color: "eef2f1"
+          timezone: Europe/Berlin
+          notification-summary: "Yupsie"
